@@ -2,7 +2,7 @@
   "name": "my-pwa-app",
   "version": "0.0.0",
   "private": true,
-  "main": "electron/main.cjs",
+  "main": "electron/main.js",
   "scripts": {
     "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
     "build": "vite build",
