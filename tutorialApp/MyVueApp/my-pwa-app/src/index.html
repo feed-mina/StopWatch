@@ -32,7 +32,8 @@
 
         <div class="pomo">
             <h3>뽀모도로 세션: <span id="pomo-session">0</span></h3>
-            <button id="pomo-btn">뽀모도로 시작</button>
+            <button id="pomo-btn">뽀모도로 시작(25분 집중)</button>
+            <button id="pomo-break-btn">5분 휴식</button>
         </div>
     </div>
 
@@ -47,6 +48,7 @@
         const stopBtn = document.getElementById("stop-btn");
         const resetBtn = document.getElementById("reset-btn");
         const pomoBtn = document.getElementById("pomo-btn");
+        const pomoBreakBtn = document.getElementById("pomo-break-btn");
         const pomoSessionDisplay = document.getElementById("pomo-session");
 
         function updateDisplay() {
@@ -90,14 +92,26 @@
 
             setTimeout(() => {
                 stopTimer();
-                alert("뽀모도로 세션 종료 , 휴식 시간입니다!");
+                alert("뽀모도로 세션 종료 !");
             }, 25 * 60 * 1000); // 25분 타이머
         }
 
+        function startPomodoroBreak() {
+            resetTimer();
+            pomoSession++;
+            pomoSessionDisplay.textContent = pomoSession;
+            startTimer();
+
+            setTimeout(() => {
+                stopTimer();
+                alert("5분 휴식 시간입니다!");
+            }, 5 * 60 * 1000); // 25분 타이머
+        }
         startBtn.addEventListener("click", startTimer);
         stopBtn.addEventListener("click", stopTimer);
         resetBtn.addEventListener("click", resetTimer);
         pomoBtn.addEventListener("click", startPomodoro);
+        pomoBtn.addEventListener("click", startPomodoroBreak);
 
         updateDisplay();
     </script>

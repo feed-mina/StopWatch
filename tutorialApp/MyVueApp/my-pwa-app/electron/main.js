@@ -13,7 +13,7 @@ app.whenReady().then(() => {
     });
 
     // 🚀 절대경로를 사용해 index.html 불러오기
-    mainWindow.loadFile(path.join(__dirname, 'index.html'));
+    mainWindow.loadFile(path.join(__dirname, '../src/index.html'));
 
     mainWindow.on('closed', () => {
         mainWindow = null;

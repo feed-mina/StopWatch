@@ -1,7 +1,26 @@
-import './assets/main.css'
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import './registerServiceWorker' // PWA 기능 추가!
+let mainWindow;
 
-createApp(App).mount('#app')
+app.whenReady().then(() => {
+    mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true
+        }
+    });
+
+    mainWindow.loadFile(path.join(__dirname, 'index.html'));
+
+    mainWindow.on('closed', () => {
+        mainWindow = null;
+    });
+});
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
