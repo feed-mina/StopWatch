@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
+    <!-- <meta http-equiv="Content-Security-Policy" content="style-src 'self' 'nonce-123456'; script-src 'self' 'nonce-123456';"> -->
+    <title>Vite App</title>
+        <!-- INLINE STYLE (이전에는 CSP로 막혔음) -->
+        <style>
+          body {
+              background-color: lightblue;
+              text-align: center;
+              font-family: Arial, sans-serif;
+          }
+          h1 {
+              color: darkblue;
+          }
+      </style>
+  
+  </head>
+  <body>
+
+    <h1>스타일과 스크립트 실행 테스트</h1>
+
+    <button onclick="changeText()">클릭하세요</button>
+    <p id="text">이 텍스트가 바뀝니다.</p>
+
+    <!-- INLINE SCRIPT (이전에는 CSP로 막혔음) -->
+    <script>
+        function changeText() {
+            document.getElementById("text").innerText = "CSP 문제 해결 완료!";
+        }
+    </script>
+
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
