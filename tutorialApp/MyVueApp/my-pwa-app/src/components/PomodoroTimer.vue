@@ -1,10 +1,8 @@
-<script>
+<script setup>
 import { ref, computed } from "vue";
 import { Notyf } from "notyf";
 import "notyf/notyf.min.css";
 
-export default {
-  setup() {
     // 알림 라이브러리 설정
     const notyf = new Notyf();
 
@@ -21,7 +19,7 @@ export default {
     });
 
     // 뽀모도로 시작
-    const startPomodoro = () => {
+    function startPomodoro(){
       pomoSession.value++;
       if (!interval) {
         interval = setInterval(() => {
@@ -36,46 +34,25 @@ export default {
     };
 
     // 뽀모도로 정지
-    const stopPomodoro = () => {
+    function stopPomodoro(){
       clearInterval(interval);
       interval = null;
     };
 
     // 초기화 (25분으로 리셋)
-    const resetPomodoro = () => {
+    function resetPomodoro () {
       time.value = 25 * 60;
       stopPomodoro();
     };
 
     // 5분 휴식 시작
-    const startBreak = () => {
+    function startBreak(){
       stopPomodoro();
       time.value = 5 * 60; // 5분 휴식
       startPomodoro();
     };
-
-    return {
-      pomoSession,
-      time,
-      formattedTime,
-      startPomodoro,
-      stopPomodoro,
-      resetPomodoro,
-      startBreak,
-    };
-  },
-};
+ 
 </script>
-
-<style scoped>
-.pomodoro {
-  text-align: center;
-}
-button {
-  margin: 5px;
-}
-</style>
-
 <template>
   <div class="pomodoro">
     <h2> 🍅 뽀모도로 모드</h2>
@@ -87,3 +64,13 @@ button {
     <button @click="startBreak">5분 휴식</button>
   </div>
 </template>
+
+<style scoped>
+.pomodoro {
+  text-align: center;
+}
+button {
+  margin: 5px;
+}
+</style>
+

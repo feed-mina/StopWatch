@@ -1,51 +1,38 @@
 
-<script>
-export default {
-  setuo() {
+<script setup>
+import { ref, computed } from 'vue';
     
     const time = ref(0);
     const running = ref(false);
     let interval = null;
 
-    const formattedTime = () => {
+    const  formattedTime = computed(() => {
       const minutes = Math.floor(this.time / 6000);
       const seconds = Math.floor((this.time % 6000) / 100);
       const milliseconds = this.time % 100;
       return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}.${milliseconds}`;
-    };
+    });
   
-    const startTimer = () => {
-      this.running = true;
-      if (!this.interval) {
-        this.interval = setInterval(() => {
+    function  startTimer  ()  {
+      running.value = true;
+      if (!interval) {
+        interval = setInterval(() => {
           this.time++;
         }, 10);
       }
     };
 
-    const stopTimer = () => {
-      this.running = false;
-      clearInterval(this.interval);
-      this.interval = null;
+    function  stopTimer ()  {
+      running.value = false;
+      clearInterval(interval);
+      interval = null;
     };
     
-    const resetTimer = () => {
-      this.running = false;
-      this.time = 0;
-      this.stopTimer();
+    function  resetTimer () {
+      stopTimer();
+      time.value = 0;
     };
-
-    
-    return {
-      time,
-      running,
-      formattedTime,
-      startTimer,
-      stopTimer,
-      resetTimer
-    };
-  },
-};
+ 
 </script>
 <template>
     <div class="stopwatch">
