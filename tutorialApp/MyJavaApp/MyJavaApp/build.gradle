@@ -3,8 +3,6 @@ plugins {
     id 'org.springframework.boot' version '3.4.3'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'edu.sc.seis.launch4j' version '2.5.0' // 최신 버전 확인 필요
-    id("com.android.application")
-    id("kotlin-android") // Kotlin 사용 시 필요
 }
 
 group = 'com.my.app'
@@ -20,6 +18,7 @@ repositories {
     mavenCentral()
 }
 
+/*
 android {
     compileSdk = 34 // 최신 SDK 버전 사용
 
@@ -38,11 +37,9 @@ android {
         }
     }
 }
+ */
 
 dependencies {
-   // implementation("androidx.appcompat:appcompat:1.6.1") // 안드로이드 기본 UI 라이브러리
-    implementation("androidx.webkit:webkit:1.6.0") // WebView 최신 버전
-    implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
