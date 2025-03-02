@@ -3,14 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-   //css: {postcss: "./postcss.config.cjs"}, PostCSS 설정 파일 직접 지정 
-  server: {
-    force: true,
-    strictPort: true, // 포트 충돌 방지
-    hmr: {
-        overlay: false // 오류 메시지 화면 출력 방지
-    }
-  },
   plugins: [
     vue(),
     VitePWA({
@@ -26,7 +18,19 @@ export default defineConfig({
         type: 'module',
         navigateFallback: 'index.html', // 404 방지
       },
+      manifest: {
+        name: '뽀모도로 타이머',
+        short_name: '뽀모도로',
+        description: '집중을 도와주는 타이머 앱',
+        background_color: '#ffffff',
+        theme_color: '#000000',  // ✅ 여기에 넣어줘야 적용됨!
+        display: 'standalone',
+        start_url: '/',
+      }
     }),
   ],
   base: './', // 상대 경로 설정
-})
+  server: {
+    port: 5173, // ✅ Vite 개발 서버 포트 번호
+  },
+});

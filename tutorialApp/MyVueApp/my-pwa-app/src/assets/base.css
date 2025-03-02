@@ -1,4 +1,24 @@
+/* 기본 밝은 테마 */
+body {
+  background-color: white;
+  color: black;
+}
 
+/* 다크모드일 때 */
+.dark body {
+  background-color: #1a202c;
+  color: white;
+}
+
+button {
+  background-color: #ddd;
+  color: black;
+}
+
+.dark button {
+  background-color: #333;
+  color: white;
+}
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;

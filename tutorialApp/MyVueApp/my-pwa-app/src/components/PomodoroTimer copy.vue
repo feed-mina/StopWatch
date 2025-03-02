@@ -31,8 +31,8 @@
         this.resetTimer();
         if (!this.interval) {
           this.interval = setInterval(() => {
-            if (this.time > 0) {
-              this.time--;
+            if (this.pomodoroSeconds > 0) {
+              this.pomodoroSeconds--;
             } else {
               this.stopPomodoro();
               alert("뽀모도로 타이머 종료!");
@@ -45,7 +45,7 @@
         this.interval = null;
       },
       resetPomodoro() {
-        this.time = 25 * 60;
+        this.pomodoroSeconds = 25 * 60;
         this.stopPomodoro();
       }
     }
