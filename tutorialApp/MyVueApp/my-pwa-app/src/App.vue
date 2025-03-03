@@ -1,72 +1,49 @@
-
 <script  setup>
-import Stopwatch from "./components/Stopwatch.vue";
-import PomodoroTimer from "./components/PomodoroTimer.vue"; 
+import LoginView from './components/LoginView.vue'
+import MainView from './components/MainView.vue'
 import CurrentTime from "./components/CurrentTime.vue"; 
 import { ref, onMounted, provide } from "vue";
 import axios from "axios";
 
     const isDarkMode = ref(false);
     const isTimeVisible = ref(false);
+    const isLogin = ref(false);
 
-    function checkServerTime() {
-      axios.get('http://localhost:8080/api/timer/now')
-          .then(response => {
-//        console.log("서버 시간:", response.data);
-        isTimeVisible.value = true;  // 서버 연결 성공하면 보임
-    })
-    .catch(error => {
-      console.error(error);
-      isTimeVisible.value = false;  // 서버 안되면 숨김
-      // this.nowTime = new Date().toLocaleTimeString(); // 서버 안되면 현재 시간
-    });
-}
-
-    const toggleDarkMode = () => {
-      isDarkMode.value = !isDarkMode.value;
-      document.documentElement.classList.toggle("dark", isDarkMode.value);
+    function handleLoginSuccess(){
+      isLogin.value = true;
     };
 
-    const showNotification = ref(false);
-
-    const showAlert = () => {
-      showNotification.value = true;
-      setTimeout(() => {
-        showNotification.value = false;
-      }, 3000);
-    };
+//     function checkServerTime() {
+//       axios.get('http://localhost:8080/api/timer/now')
+//           .then(response => {
+// //        console.log("서버 시간:", response.data);
+//         isTimeVisible.value = true;  // 서버 연결 성공하면 보임
+//     })
+//     .catch(error => {
+//       console.error(error);
+//       isTimeVisible.value = false;  // 서버 안되면 숨김
+//       // this.nowTime = new Date().toLocaleTimeString(); // 서버 안되면 현재 시간
+//     });
+// }
 
 onMounted(() => {
-  checkServerTime();
+  // checkServerTime();
   // setInterval(checkServerTime, 1000);  
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     isDarkMode.value = true;
     document.documentElement.classList.add("dark");
   }
 });
-provide('isTimeVisible', isTimeVisible);
+// provide('isTimeVisible', isTimeVisible);
 </script>
 
 <template>
   <div class="app">
-  <CurrentTime/>
+    <!-- 로그인 안 했을 때 -->
+    <LoginView v-if="!isLogin" @loginSuccess="handleLoginSuccess" />
 
-    <h1>🕒 스탑워치 & 뽀모도로</h1>
-
-    <!-- 스탑워치 -->
-    <Stopwatch />
-    <!-- 뽀모도로 -->
-    <PomodoroTimer /> 
-
-    <!-- 다크모드 버튼 -->
-    <button @click="toggleDarkMode" class="p-2 bg-gray-300 dark:bg-gray-700 rounded">
-      {{ isDarkMode ? "🌞 라이트 모드" : "🌙 다크 모드" }}
-    </button>
-
-    <!--알림-->
-    <div v-if="showNotification" class="notification">
-      알림이 떴어요!
-  </div>
+    <!-- 로그인 성공했을 때 -->
+    <MainView v-else />
 </div>
 </template>
 
