@@ -4,6 +4,32 @@ body {
   color: black;
 }
 
+/* 디자인 꾸밈 */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('/src/assets/back.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  animation: fadeIn 2s ease-in-out;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #4B2C2F;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.container {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+
 /* 다크모드일 때 */
 .dark body {
   background-color: #1a202c;
@@ -11,9 +37,26 @@ body {
 }
 
 button {
+  background-color: #FADADD;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #F8BBD0;
+  transform: scale(1.05);
+}
+
+
+/* button {
   background-color: #ddd;
   color: black;
-}
+} */
 
 .dark button {
   background-color: #333;

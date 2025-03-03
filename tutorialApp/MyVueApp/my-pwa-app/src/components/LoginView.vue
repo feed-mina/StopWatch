@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <h1>카카오 로그인 화면</h1>
-    <button @click="kakaoLogin">카카오로 로그인</button>
+  <div> 
+    <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
+
+    <button @click="kakaoLogin">   
+       <img alt="kakaoLogin" class="logo" src="../assets/kakao_login_bt.png" />
+    </button>
   </div>
 </template>
 
