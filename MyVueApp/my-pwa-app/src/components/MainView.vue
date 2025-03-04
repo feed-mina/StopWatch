@@ -28,6 +28,7 @@ const kakaoToken = localStorage.getItem('kakaoAccessToken');
    
 
 async function sendAllRecords() {
+  console.log("카카오톡으로 기록 보냅니다!");
   if (!kakaoToken) {
     notyf.error("로그인을 먼저 해주세요!");
     return;
@@ -63,7 +64,22 @@ async function sendAllRecords() {
        };
    
        const showNotification = ref(false);
-   
+       const kakaoButtonEnabled = ref(false);
+
+       async function checkServer() {
+  try {
+    const response = await fetch('http://localhost:8080/health'); // 헬스 체크용 엔드포인트
+    if (response.ok) {
+      kakaoButtonEnabled.value = true; // 버튼 활성화
+    } else {
+      kakaoButtonEnabled.value = false; // 버튼 비활성화
+    }
+  } catch (error) {
+    kakaoButtonEnabled.value = false; // 서버 연결 안되면 비활성화
+  }
+}
+}
+
        const showAlert = () => {
          showNotification.value = true;
          setTimeout(() => {
@@ -72,6 +88,7 @@ async function sendAllRecords() {
        };
    
    onMounted(() => {
+    checkServer();
      checkServerTime();
      // setInterval(checkServerTime, 1000);  
      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -90,7 +107,7 @@ async function sendAllRecords() {
       <!-- 뽀모도로 -->
       <PomodoroTimer />
 <div>
-  <button class="kakaosendbutton" @click="sendAllRecords">카카오톡으로 기록 보내기</button>
+  <button class="kakaosendbutton" @click="sendAllRecords" :disabled="!kakaoButtonEnabled">카카오톡으로 기록 보내기</button>
 
 </div>
       <!-- 다크모드 버튼 -->

@@ -38,10 +38,13 @@ provide("pomoSession", pomoSession);
    });
 </script>
 <template>
-   <div class="app">
-      <!-- 로그인 안 했을 때 -->
+
+   <!-- <div class="app">
+    // 로그인 안 했을 때
       <LoginView v-if="!isLogin" @loginSuccess="handleLoginSuccess" />
-      <!-- 로그인 성공했을 때 -->
+       // 로그인 성공했을 때
       <MainView class="mainView" v-else  @logout="handleLogout" />
-   </div>
+   </div> -->
+
+   <router-view></router-view>
 </template>

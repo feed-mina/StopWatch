@@ -1,10 +1,19 @@
-import { createRouter, createWebHistory } from 'vue-router'; // <-- 문제 가능
+import { createRouter, createWebHistory } from 'vue-router'; 
+import LoginView from '../components/LoginView.vue';
+import MainView from '../components/MainView.vue';
+
+
+const routes = [
+  { path: '/', component: LoginView },
+  { path: '/main', component: MainView },
+];
+
+
 
 const router = createRouter({
-  history: createWebHistory(), // 🚨 이 부분이 문제일 가능성 있음!
-  routes: [
-    // { path: '/', component: () => import('../views/HomeView.vue') }
-  ]
+  history: createWebHistory(),
+  routes,
 });
+
 
 export default router;
