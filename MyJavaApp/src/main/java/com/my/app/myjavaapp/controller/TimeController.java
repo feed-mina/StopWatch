@@ -19,5 +19,9 @@ public class TimeController {
 
     }
 
-
+    //health 주소로 GET 요청이 오면 실행
+    @GetMapping("/health")
+    public String healthCheck() {
+        return "OK";  // "OK"라는 글자를 돌려줘요
+    }
 }

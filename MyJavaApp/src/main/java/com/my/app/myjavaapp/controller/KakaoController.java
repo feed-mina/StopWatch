@@ -113,30 +113,37 @@ public class KakaoController {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + accessToken); // Access Token 넣기
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        Integer stopwatchTime = (Integer) data.get("stopwatchTime");
-        Integer pomodoroCount = (Integer) data.get("pomodoroCount");
-        Integer pomodoroTotalTime = (Integer) data.get("pomodoroTotalTime");
+        Integer stopwatchTime = data.get("stopwatchTime") != null ? (Integer) data.get("stopwatchTime") : 0;
+        Integer pomodoroCount = data.get("pomodoroCount") != null ? (Integer) data.get("pomodoroCount") : 0;
+        Integer pomodoroTotalTime = data.get("pomodoroTotalTime") != null ? (Integer) data.get("pomodoroTotalTime") : 0;
+
         StringBuilder message = new StringBuilder();
 
         log.info("stopwatchTime : " + stopwatchTime);
         log.info("pomodoroCount : " + pomodoroCount);
         log.info("pomodoroTotalTime : " + pomodoroTotalTime);
         // 스탑워치 처리 로직
-        if (stopwatchTime != null) {
+        if (stopwatchTime != null && stopwatchTime > 0) {
             int minutes = stopwatchTime / 60;
             int seconds = stopwatchTime % 60;
             message.append("⏱️ 스탑워치 기록: " + minutes + "분 " + seconds + "초\n");
         }
-        log.info("message1 : " + message);
-        if (pomodoroCount != null && pomodoroTotalTime != null) {
+
+        if (pomodoroCount != null && pomodoroCount > 0 && pomodoroTotalTime != null && pomodoroTotalTime > 0) {
             message.append("🍅 뽀모도로: " + pomodoroCount + "회, 총 " + pomodoroTotalTime + "분 완료!");
         }
-        log.info("message2 : " + message);
+
         if (message.length() == 0) {
             message.append("❗ 기록이 없어요.");
         }
+
         // 메시지가 정상적으로 만들어졌는지 확인
         String messageText = message.toString();
+
+        if (messageText.isEmpty() || messageText.equals("-")) {
+            messageText = "❗ 기록이 없어요.";
+        }
+        messageText = messageText.replace("\n", "\\n").replace("\"", "\\\"");
 
         // 카톡에 보낼 메시지 내용
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();

@@ -51,14 +51,19 @@
       }
       // 보낼 데이터 만들기 (값이 있는 것만 담기)
       const requestData = {};
-      if(stopwatchSeconds.value){
+      if(stopwatchSeconds.value > 0){
         requestData.stopwatchTime = stopwatchSeconds.value; // 스탑워치 시간(초)
       }
-      if(pomoSession.value){
+      if(pomoSession.value > 0){
         requestData.pomodoroCount = pomoSession.value; // 뽀모도로 회수
         requestData.pomodoroTotalTime = pomoSession.value * 25; // 뽀모도로 총 시간
       }
+      console.log("보내는 데이터 확인:", requestData);
    
+      if (Object.keys(requestData).length === 0) {
+        notyf.error("보낼 기록이 없어요!");
+        return;
+      }
    try {
     const response = await axios.post(
       "http://localhost:8080/api/kakao/sendRecord", 
@@ -117,13 +122,7 @@
         kakaoButtonEnabled.value = false; // 서버 연결 안되면 비활성화
       }
    }
-   
-    const showAlert = () => {
-      ShowNotification.value = true;
-      setTimeout(() => {
-      ShowNotification.value = false;
-        }, 3000);
-      };
+    
    
    onMounted(() => {
     checkServer();

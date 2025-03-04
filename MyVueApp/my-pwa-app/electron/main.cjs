@@ -2,8 +2,6 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 
 let win;
 
-let mainWindow; // 사용 안 함 
-let loginWindow;
 function createWindow() {
   win = new BrowserWindow({
     width: 800,
@@ -13,18 +11,18 @@ function createWindow() {
       contextIsolation: true,
     },
   });
+
+  // 최초 로딩
   win.loadURL('http://localhost:5173');
-}
 
-// loginWindow.loadURL('http://localhost:5173'); // 처음엔 로그인 화면
-// loginWindow.on('closed', () => {
-//   loginWindow = null;
-// });
+  // 창이 닫히기 전에 localStorage 삭제
+  win.on('close', () => {
+    if (win && !win.isDestroyed()) {
+      win.webContents.executeJavaScript(`localStorage.clear();`);
+    }
+  });
 
-
-app.whenReady().then(() => {
-  createWindow() 
-
+  // CSP 설정 (보안 설정)
   win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
     callback({
       responseHeaders: {
@@ -38,7 +36,7 @@ app.whenReady().then(() => {
           "https://t1.kakaocdn.net " +
           "https://accounts.kakaocdn.net " +
           "https://t1.daumcdn.net " +
-          "https://mk.kakaocdn.net; " + // 
+          "https://mk.kakaocdn.net; " +
           "style-src 'self' 'unsafe-inline' " +
           "https://t1.kakaocdn.net " +
           "https://accounts.kakaocdn.net; " +
@@ -56,35 +54,21 @@ app.whenReady().then(() => {
       }
     });
   });
+}
 
-  win.loadURL('http://localhost:5173');
+app.whenReady().then(() => {
+  createWindow();
 });
 
-
+// 로그인 성공 신호 받으면 페이지 변경
 ipcMain.on('login-success', () => {
-  console.log(" Electron: 로그인 성공 신호 받음!");
-  if (win) {
+  console.log("Electron: 로그인 성공 신호 받음!");
+  if (win && !win.isDestroyed()) {
     win.loadURL('http://localhost:5173/main');
   }
 });
-app.on('before-quit', () => {
-  // 윈도우에 이벤트 전달
-  win.webContents.executeJavaScript(`localStorage.clear();`);
-});
+
+// 모든 창 닫혔을 때 앱 종료
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
-// localStorage 지움
-// app.on('before-quit', () => {
-//   if (loginWindow) {
-//     loginWindow.webContents.executeJavaScript(`localStorage.clear();`);
-//   }
-// });
-
-// Workbox가 캐시를 들고 있어서 /main으로 이동을 방해, 캐시 지우기 코드
-
-// if ('serviceWorker' in navigator) {
-//   caches.keys().then(names => {
-//     for (let name of names) caches.delete(name);
-//   });
-// }

@@ -13,20 +13,28 @@
    const Toyalarm = new Audio(toySound);
    const birdalarm = new Audio(birdSound);
    function playAlarm() {
-         setTimeout(()=>{
-           Pomoalarm.play();
-         }, 10000); // 테스트 10초
-     }
-   function playAlarm2() {
-         setTimeout(()=>{
-           Toyalarm.play();
-         }, 5000); // 테스트 5초
-     }
-   function playAlarm3() {
-         setTimeout(()=>{
-           birdalarm.play();
-         }, 5000); // 테스트 5초
-     }
+  Pomoalarm.play();
+  setTimeout(() => {
+    Pomoalarm.pause();
+    Pomoalarm.currentTime = 0; // 처음으로 되돌리기
+  }, 2000); // 2초만 재생
+}
+
+function playAlarm2() {
+  Toyalarm.play();
+  setTimeout(() => {
+    Toyalarm.pause();
+    Toyalarm.currentTime = 0;
+  }, 2000);
+}
+
+function playAlarm3() {
+  birdalarm.play();
+  setTimeout(() => {
+    birdalarm.pause();
+    birdalarm.currentTime = 0;
+  }, 2000);
+}
        // 알림ui 라이브러리 설정
        const notyf = new Notyf();
    
@@ -63,7 +71,7 @@
            }, 1000);
          }
          // playAlarm();
-         Pomoalarm.play();
+         playAlarm3();
        };
    
    
@@ -72,17 +80,17 @@
          clearInterval(interval);
          interval = null;
          isPomodoroRunning.value = false; // 종료되면 다시 시작 가능하게
-         // playAlarm2();
-         Toyalarm.play();
+        playAlarm2();
+        //  Toyalarm.play();
        };
    
    
        // 초기화 (25분으로 리셋)
        function resetPomodoro () {
          pomodoroSeconds.value = 25 * 60;
-         stopPomodoro();
+        //  pomodoroSeconds.value =  0;
+        //  stopPomodoro();
          // playAlarm2();
-         birdalarm.play();
        };
    
        // 5분 휴식 시작
@@ -108,7 +116,8 @@
    async function sendPomodoroTimerRecord() {
      if (!pomoSession.value) {
        notyf.error("보낼 기록이 없어요!");
-       localStorage.clear();
+       setTimeout(() => notyf.dismissAll(), 1000);
+      //  localStorage.clear();
        return;
      }
      if (!kakaoToken) {
@@ -133,7 +142,27 @@
        notyf.success("카카오톡으로 기록을 보냈어요!");
      } catch (error) {
        console.error("전송 실패!", error);
-       notyf.error("전송에 실패했어요!");
+      //  notyf.error("전송에 실패했어요!");
+       handleSendError(error);
+     }
+   
+
+   
+     function handleSendError(error){
+       if (error.response) {
+           if (error.response.status === 401) {
+             const loginUrl = error.response.data;
+             notyf.error("카카오 로그인이 필요해요! 로그인 페이지로 이동할게요.");
+             window.location.href = loginUrl;
+           } else if (error.response.status === 500) {
+             notyf.error("서버 환경설정 오류가 있어요. 관리자에게 알려주세요!");
+           } else {
+             notyf.error("알 수 없는 오류가 발생했어요.");
+           }
+         } else {
+           notyf.error("서버 연결에 문제가 있어요.");
+         }
+         setTimeout(() => notyf.dismissAll(), 2000);
      }
    }
 </script>

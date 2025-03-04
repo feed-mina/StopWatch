@@ -19,6 +19,29 @@
    const running = ref(false);
    let interval = null;
    
+   function playAlarm() {
+  Pomoalarm.play();
+  setTimeout(() => {
+    Pomoalarm.pause();
+    Pomoalarm.currentTime = 0; // 처음으로 되돌리기
+  }, 2000); // 2초만 재생
+}
+
+function playAlarm2() {
+  Toyalarm.play();
+  setTimeout(() => {
+    Toyalarm.pause();
+    Toyalarm.currentTime = 0;
+  }, 2000);
+}
+
+function playAlarm3() {
+  birdalarm.play();
+  setTimeout(() => {
+    birdalarm.pause();
+    birdalarm.currentTime = 0;
+  }, 2000);
+}
    // 시간 표시
    const formattedTime = computed(() => {
      const totalTime = stopwatchSeconds.value;
@@ -40,8 +63,8 @@
          stopwatchSeconds.value++;
        }, 1000);
        setTimeout(() => {
-         Pomoalarm.play();
-       }, 3000);
+        playAlarm3();
+       }, 1000);
      }
    }
    
@@ -51,14 +74,14 @@
    
      // 바로 알림(2초 후 자동 닫힘)
      notyf.error("스탑워치를 정지했어요!");
-     setTimeout(() => notyf.dismissAll(), 2000);
+     setTimeout(() => notyf.dismissAll(), 1000);
    
      clearInterval(interval);
      interval = null;
      // 3초후 알람
      setTimeout(() => {
-       Toyalarm.play();
-     }, 3000);
+      playAlarm2();
+     }, 1000);
    }
    // 초기화
    function resetTimer() {
@@ -71,12 +94,12 @@
    
      if (!stopwatchSeconds.value) {
        notyf.error("보낼 기록이 없어요!");
-       setTimeout(() => notyf.dismissAll(), 2000);
+       setTimeout(() => notyf.dismissAll(), 1000);
        return;
      }
      if (!kakaoToken) {
        notyf.error("로그인을 먼저 해주세요!");
-       localStorage.clear();
+    //     localStorage.clear();
        return;
      }
      try {
