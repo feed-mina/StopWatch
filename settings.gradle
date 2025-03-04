@@ -1,4 +1,4 @@
-rootProject.name = 'tutorialApp'
+rootProject.name = 'MyJavaApp'
 
 include 'MyJavaApp'
 include 'MyVueApp'
