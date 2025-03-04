@@ -1,0 +1,20 @@
+// 프로젝트 전체에 적용되는 설정
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Android Gradle Plugin 버전
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        // Kotlin Gradle Plugin 버전
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}

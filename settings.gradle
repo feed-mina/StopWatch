@@ -1,0 +1,5 @@
+rootProject.name = 'tutorialApp'
+
+include 'MyJavaApp'
+include 'MyVueApp'
+include 'app' // Android 모듈 추가
