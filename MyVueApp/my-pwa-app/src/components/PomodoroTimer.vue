@@ -77,9 +77,10 @@ function playAlarm3() {
    
        // 뽀모도로 정지
        function stopPomodoro(){
+         isPomodoroRunning.value = false; // 종료되면 다시 시작 가능하게
+         notyf.success("뽀모도로를 정지했어요!");
          clearInterval(interval);
          interval = null;
-         isPomodoroRunning.value = false; // 종료되면 다시 시작 가능하게
         playAlarm2();
         //  Toyalarm.play();
        };
@@ -87,7 +88,12 @@ function playAlarm3() {
    
        // 초기화 (25분으로 리셋)
        function resetPomodoro () {
+        isPomodoroRunning.value = false;
+        notyf.success("초기화 했습니다.");
          pomodoroSeconds.value = 25 * 60;
+         clearInterval(interval);
+         console.log("초기화 종료!");
+         playAlarm2();
         //  pomodoroSeconds.value =  0;
         //  stopPomodoro();
          // playAlarm2();
@@ -95,16 +101,18 @@ function playAlarm3() {
    
        // 5분 휴식 시작
        function startBreak(){
-         stopPomodoro();
+        //  stopPomodoro();
          pomodoroSeconds.value = 5 * 60; // 5분 휴식
+         notyf.success("5분 휴식!");
          if (!interval) {
            interval = setInterval(() => {
              if (pomodoroSeconds.value > 0) {
                pomodoroSeconds.value--;
              } else {
-               stopPomodoro();
+           //    stopPomodoro();
                // playAlarm();
-               Pomoalarm.play();
+               console.log("5분 휴식 종료!");
+               playAlarm();
                notyf.success("5분 휴식 종료!");
              }
            }, 1000);
@@ -174,7 +182,7 @@ function playAlarm3() {
       <button class="pomobutton" @click="startPomodoro" :disabled="isPomodoroRunning">25분 집중</button>
       <button class="pomobutton" @click="stopPomodoro">정지</button>
       <button class="pomobutton" @click="resetPomodoro">초기화</button>
-      <button class="pomobutton" @click="startBreak">5분 휴식</button>
+      <button class="pomobutton" @click="startBreak" :disabled="isPomodoroRunning">5분 휴식</button>
       <!-- <div>
          <button class="kakaosendbutton" @click="sendPomodoroTimerRecord" v-if="isTimeVisible">카카오톡으로 기록 보내기</button>
       </div> -->

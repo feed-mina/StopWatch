@@ -1,7 +1,12 @@
 <script setup>
    import { onMounted } from 'vue';
+   import { Notyf } from "notyf";
+   import "notyf/notyf.min.css";
    const emit = defineEmits(['loginSuccess']);
    let ipcRenderer = null;
+   
+       // 알림ui 라이브러리 설정
+       const notyf = new Notyf();
    
    const isElectron = !!(window && window.process && window.process.type);
    
@@ -30,39 +35,52 @@
          scope: "talk_message", 
          success: function(authObj) {
            console.log('로그인 성공!', authObj);
+           notyf.success("로그인 성공!");
            // 토큰 저장
            localStorage.setItem('kakaoAccessToken', authObj.access_token);
-           emit('loginSuccess');
+           window.location.href = '/main';
+           // emit('loginSuccess');
          },
          fail: function(err) {
            console.error('❌ 로그인 실패', err);
+           notyf.error("❌ 로그인 실패");
          }
        });
      } else {
+      notyf.error("❌ 로그인 실패");
        console.error('카카오 SDK가 아직 로드되지 않았어요!');
      }
    
    } else {
      console.log('🌐 웹에서는 그냥 페이지 이동!');
-     
      if (window.Kakao && window.Kakao.Auth) {
        window.Kakao.Auth.login({
          scope: "talk_message", 
          success: function(authObj) {
            console.log('로그인 성공!', authObj);
-           // 토큰 저장
+
+            const token = authObj.access_token;
+            console.log('로그인 성공!', token);
+            notyf.success("로그인 성공!");
+
+            // 토큰 저장
            localStorage.setItem('kakaoAccessToken', authObj.access_token);
-           emit('loginSuccess');
-         },
+           // emit('loginSuccess');
+           window.location.href = '/main';
+          // 토큰을 URL에 같이 넣어서 페이지 이동
+          //window.location.href = `/main?kakaoAccessToken=${token}`;
+
+          },
          fail: function(err) {
+          notyf.error("❌ 로그인 실패");
            console.error('❌ 로그인 실패', err);
          }
        });
      } else {
+      notyf.error("❌ 로그인 실패");
        console.error('카카오 SDK가 아직 로드되지 않았어요!');
      }
-     
-     window.location.href = '/main';
+
    }
    }
 </script>
