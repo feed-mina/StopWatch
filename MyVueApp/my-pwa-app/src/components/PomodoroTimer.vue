@@ -88,12 +88,10 @@ function playAlarm3() {
    
        // 초기화 (25분으로 리셋)
        function resetPomodoro () {
-        isPomodoroRunning.value = false;
+        isPomodoroRunning.value = true;
         notyf.success("초기화 했습니다.");
          pomodoroSeconds.value = 25 * 60;
-         clearInterval(interval);
          console.log("초기화 종료!");
-         playAlarm2();
         //  pomodoroSeconds.value =  0;
         //  stopPomodoro();
          // playAlarm2();

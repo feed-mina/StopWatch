@@ -17,11 +17,8 @@
    const stopwatchSeconds = inject('stopwatchSeconds', ref(0));
    const pomoSession = inject('pomoSession', ref(0));
 
-  let kakaoAccessToken = null;
    
   const params = new URLSearchParams(window.location.search);
-  const token = params.get('kakaoAccessToken');
-  console.log('넘어온 토큰:', token);
 
    // 서버 시간 체크
    function checkServerTime() {
@@ -132,7 +129,7 @@
    onMounted(() => {
      checkServer();
      checkServerTime();
-    kakaoAccessToken = localStorage.getItem('kakaoAccessToken');
+  const  kakaoAccessToken = localStorage.getItem('kakaoAccessToken');
     console.log('카카오 토큰:', kakaoAccessToken);
      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
        isDarkMode.value = true;
