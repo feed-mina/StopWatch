@@ -147,9 +147,14 @@ public class KakaoController {
 
         // 카톡에 보낼 메시지 내용
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+//        params.add("template_object", "{"
+//                + "\"object_type\":\"text\","
+//                + "\"text\":\"" + messageText.replace("\"", "\\\"") + "\","
+//                + "\"link\":{\"web_url\":\"https://www.kakao.com\"}"
+//                + "}");
         params.add("template_object", "{"
                 + "\"object_type\":\"text\","
-                + "\"text\":\"" + messageText.replace("\"", "\\\"") + "\","
+                + "\"text\":\"" + messageText + "\","
                 + "\"link\":{\"web_url\":\"https://www.kakao.com\"}"
                 + "}");
 
