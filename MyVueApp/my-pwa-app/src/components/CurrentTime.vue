@@ -2,12 +2,18 @@
    import { ref, onMounted } from 'vue';
    import axios from 'axios';
        
+
+  // 서버 주소 설정
+// const apiUrl = process.env.NODE_ENV === 'development'
+//   ? 'http://localhost:8080'
+//   : 'http://justsaying.co.kr';
+
        const currentTime = ref('');
        const isTimeVisible = ref(false);  
    
        function updateTime(){
          if (import.meta.env.VITE_APP_USE_API === 'true') {
-     axios.get('http://localhost:8080/api/timer/now')
+     axios.get(`${apiUrl}/api/timer/now`)
        .then(response => {
          console.log("서버 시간:", response.data);
          currentTime.value = response.data;

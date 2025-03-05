@@ -3,10 +3,19 @@
    import axios from "axios";
    import { Notyf } from "notyf";
    import "notyf/notyf.min.css";
+   import { apiUrl } from "@/api/index.js";
+
    
    import alarmSound from "/src/assets/alarm.wav";
    import toySound from "/src/assets/toy.mp3";
    import birdSound from "/src/assets/bird.mp3";
+
+
+  // 서버 주소 설정
+  // const apiUrl = process.env.NODE_ENV === 'development'
+  // ? 'http://localhost:8080'
+  // : 'http://justsaying.co.kr';
+
    const kakaoToken = localStorage.getItem('kakaoAccessToken');
    const isTimeVisible = inject('isTimeVisible');
    const Pomoalarm = new Audio(alarmSound);
@@ -134,7 +143,7 @@ function playAlarm3() {
      }
      const totalMinutes = Math.floor((25 * 60 * pomoSession.value) / 60);
      try {
-       const response = await axios.post("http://localhost:8080/api/kakao/sendRecord",
+       const response = await axios.post(`${apiUrl}/api/kakao/sendRecord`,
          {
            pomodoroCount: pomoSession.value,
            pomodoroTotalTime: totalMinutes ,

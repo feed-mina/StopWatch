@@ -1,6 +1,8 @@
 <script setup>
    import { ref, computed, inject } from 'vue';
    import axios from "axios";
+   import { apiUrl } from "@/api/index.js";
+
    import { Notyf } from 'notyf';
    import 'notyf/notyf.min.css';
    import alarmSound from "/src/assets/alarm.wav";
@@ -19,6 +21,11 @@
    const running = ref(false);
    let interval = null;
    
+  // 서버 주소 설정
+// const apiUrl = process.env.NODE_ENV === 'development'
+//   ? 'http://localhost:8080'
+//   : 'http://justsaying.co.kr';
+
    function playAlarm() {
   Pomoalarm.play();
   setTimeout(() => {
@@ -108,7 +115,7 @@ function playAlarm3() {
        return;
      }
      try {
-       const response = await axios.post("http://localhost:8080/api/kakao/sendRecord",
+       const response = await axios.post(`${apiUrl}/api/kakao/sendRecord`,
          { stopwatchTime: stopwatchSeconds.value },
          {
            headers: {

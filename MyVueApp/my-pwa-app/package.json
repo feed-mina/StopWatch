@@ -5,14 +5,12 @@
   "author": "MinYeRin",
   "private": true,
   "main": "electron/main.cjs",
-  "scripts": {
-    "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
-    "start": "node --unhandled-rejections=strict node_modules/.bin/electron .",
-    "build": "vite build",
-    "electron": "electron .",
-    "electron:build": "electron-builder",
-    "package": "electron-builder"
-  },
+ "scripts": {
+  "dev": "concurrently \"vite --port=4000\" \"wait-on http://localhost:4000 && electron .\"",
+  "build": "vite build",
+  "start": "electron .",
+  "package": "electron-builder"
+},
   "build": {
     "publish": [
       {
@@ -24,7 +22,7 @@
     "appId": "com.example.timerapp",
     "productName": "MyTimerApp",
     "directories": {
-      "output": "dist_electron"
+      "output": "release"
     },
     "files": [
       "dist/",
@@ -48,25 +46,28 @@
     }
   },
   "dependencies": {
-    "electron-updater": "^6.3.9",
-    "notyf": "^3.10.0",
-    "register-service-worker": "^1.7.2",
-    "serialize-javascript": "^6.0.2",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
+    "vue-router": "^4.5.0",
     "@tailwindcss/postcss": "^4.0.9",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/cli-plugin-pwa": "^5.0.8",
     "autoprefixer": "^10.4.20",
     "electron": "^34.3.0",
+    "notyf": "^3.10.0",
+    "electron-updater": "^6.3.9",
     "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.0.9",
     "vite": "^6.2.0",
     "vite-plugin-pwa": "^0.21.1",
-    "vite-plugin-vue-devtools": "^7.7.2"
+    "vite-plugin-vue-devtools": "^7.7.2",
+    "register-service-worker": "^1.7.2",
+    "serialize-javascript": "^6.0.2",
+    "concurrently": "^8.2.1",
+    "wait-on": "^7.0.0"
   },
   "type": "module"
 }
