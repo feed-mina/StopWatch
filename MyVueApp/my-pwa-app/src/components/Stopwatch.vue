@@ -73,12 +73,11 @@ function playAlarm3() {
      running.value = false;
    
      // 바로 알림(2초 후 자동 닫힘)
-     notyf.success("스탑워치를 정지했어요!");
      setTimeout(() => notyf.dismissAll(), 1000);
    
      clearInterval(interval);
      interval = null;
-     // 3초후 알람
+     notyf.success("스탑워치를 정지했어요!");
      setTimeout(() => {
       playAlarm2();
      }, 1000);
@@ -86,10 +85,12 @@ function playAlarm3() {
    // 초기화
    function resetTimer() {
     stopwatchSeconds.value = 0;
-    notyf.success("스탑워치를 초기화 했어요!");
          clearInterval(interval);
          console.log("초기화!");
-         playAlarm2();
+        notyf.success("스탑워치를 초기화 했어요!");
+        setTimeout(() => {
+      playAlarm2();
+     }, 1000);
    }
    // 기록 전송
    async function sendStopwatchTimeRecord() {

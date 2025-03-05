@@ -78,9 +78,10 @@ function playAlarm3() {
        // 뽀모도로 정지
        function stopPomodoro(){
          isPomodoroRunning.value = false; // 종료되면 다시 시작 가능하게
-         notyf.success("뽀모도로를 정지했어요!");
          clearInterval(interval);
          interval = null;
+         notyf.success("뽀모도로를 정지했어요!");
+
         playAlarm2();
         //  Toyalarm.play();
        };
@@ -88,7 +89,7 @@ function playAlarm3() {
    
        // 초기화 (25분으로 리셋)
        function resetPomodoro () {
-        isPomodoroRunning.value = true;
+        // isPomodoroRunning.value = true;
         notyf.success("초기화 했습니다.");
          pomodoroSeconds.value = 25 * 60;
          console.log("초기화 종료!");
@@ -100,6 +101,7 @@ function playAlarm3() {
        // 5분 휴식 시작
        function startBreak(){
         //  stopPomodoro();
+         isPomodoroRunning.value = true;
          pomodoroSeconds.value = 5 * 60; // 5분 휴식
          notyf.success("5분 휴식!");
          if (!interval) {
@@ -107,11 +109,11 @@ function playAlarm3() {
              if (pomodoroSeconds.value > 0) {
                pomodoroSeconds.value--;
              } else {
-           //    stopPomodoro();
-               // playAlarm();
+                clearInterval(interval); // 타이머 정지
+                interval = null; // 초기화
                console.log("5분 휴식 종료!");
-               playAlarm();
                notyf.success("5분 휴식 종료!");
+               playAlarm();
              }
            }, 1000);
            // playAlarm2();
