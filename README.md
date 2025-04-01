@@ -1,15 +1,17 @@
 # 개인 프로젝트: Vue + Electron 기반 스탑워치 & 뽀모도로 타이머
 ## 프로젝트 URL : https://justsaying.co.kr/#/pomoLogin, https://justsaying.co.kr/#/pomoMain
 
-## 📽️ 시연 영상 보기
- [![JustSaying 시연 영상](https://img.youtube.com/vi/-Ir_SJ4zl3I/0.jpg)](https://youtube.com/shorts/-Ir_SJ4zl3I)
+## 📽️ 시연 영상 보기 > 이미지 클릭
 
-
-<p align="center">
+<p align="center"> 
+ 이미지 클릭
   <a href="https://youtube.com/shorts/-Ir_SJ4zl3I">
     <img src="https://img.youtube.com/vi/-Ir_SJ4zl3I/0.jpg" width="500" alt="JustSaying 시연 영상 썸네일" />
   </a>
+ 
 </p>
+
+
 ## 🌞 라이트모드 UI
 
 <img src="https://github.com/feed-mina/StopWatch/blob/main/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%EB%9D%BC%EC%9D%B4%ED%8A%B8%EB%AA%A8%EB%93%9C.png?raw=true" width="600" alt="뽀모도로 라이트모드 화면" />
