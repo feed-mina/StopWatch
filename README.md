@@ -2,8 +2,8 @@
 ## 프로젝트 URL : https://justsaying.co.kr/#/pomoLogin, https://justsaying.co.kr/#/pomoMain
 
 ## 📽️ 시연 영상 보기
+ [![JustSaying 시연 영상](https://img.youtube.com/vi/-Ir_SJ4zl3I/0.jpg)](https://youtube.com/shorts/-Ir_SJ4zl3I)
 
-[![JustSaying 시연 영상]
 
 <p align="center">
   <a href="https://youtube.com/shorts/-Ir_SJ4zl3I">
