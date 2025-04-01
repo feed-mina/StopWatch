@@ -6,7 +6,7 @@
 [![JustSaying 시연 영상](https://youtube.com/shorts/-Ir_SJ4zl3I?feature=share)
 ## 🌞 라이트모드 UI
 
-<img src="https://github.com/feed-mina/StopWatch/blob/main/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C.png?raw=true" width="600" alt="뽀모도로 라이트모드 화면" />
+<img src="https://github.com/feed-mina/StopWatch/blob/main/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%EB%9D%BC%EC%9D%B4%ED%8A%B8%EB%AA%A8%EB%93%9C.png?raw=true" width="600" alt="뽀모도로 라이트모드 화면" />
 
 ## 🌓 다크모드 UI
 
