@@ -4,6 +4,19 @@
 ## 📽️ 시연 영상 보기
 
 [![JustSaying 시연 영상](https://youtube.com/shorts/-Ir_SJ4zl3I?feature=share)
+## 🌞 라이트모드 UI
+
+<img src="https://github.com/feed-mina/StopWatch/blob/main/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C.png?raw=true" width="600" alt="뽀모도로 라이트모드 화면" />
+
+## 🌓 다크모드 UI
+
+<img src="https://github.com/feed-mina/StopWatch/blob/main/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C.png?raw=true" width="600" alt="뽀모도로 다크모드 화면" />
+
+
+## 🌓 카카오톡 기록 보내기 UI
+
+<img src="https://github.com/feed-mina/StopWatch/blob/main/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1.png?raw=true" width="600" alt="뽀모도로 카카오톡 기록 화면" />
+
 ``` 
 ### **프로젝트 개요**  
 이 프로젝트는 일상에서 인터넷 서핑을 하거나, 업무 중 시간을 관리하지 못해 일정이나 연락을 놓치는 경우가 많아 직접 뽀모도로 타이머를 만들어보자는 생각에서 시작되었습니다. 🖐🏻  
@@ -82,10 +95,8 @@ Electron과 웹에서의 UI 차이를 최소화하기 위해 **반응형 디자�
 
 ---
 
-## 프로젝트 링크
-- **GitHub Repository**: [링크 추가 예정]
-- **배포 URL (Vercel)**: [링크 추가 예정]
-- **포트폴리오 블로그 글**: [링크 추가 예정]
+## 프로젝트 링크 
+- **배포 URL (aws)**: [링크 추가 예정] 
 
 
 ---
