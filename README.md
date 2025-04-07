@@ -8,10 +8,15 @@
   <a href="https://youtube.com/shorts/-Ir_SJ4zl3I">
     <img src="https://img.youtube.com/vi/-Ir_SJ4zl3I/0.jpg" width="500" alt="JustSaying 시연 영상 썸네일" />
   </a>
- 
 </p>
 
 
+> "작은 집중이 모이면, 결국 큰 성취가 된다."
+> 스스로에게 집중할 수 있는 도구를 만들어보고 싶었어요.
+> 복잡한 기능 없이, 25분 집중 - 5분 휴식이라는 단순한 루틴.
+> 하지만 이 반복 속에서, 내 하루의 밀도는 확실히 달라졌어요.
+> 처음으로 Electron을 활용한 데스크탑 앱에 도전했고,
+> Vue로 만든 타이머에 상태관리와 다크모드, UX 디자인을 직접 고민했어요.
 ## 🌞 라이트모드 UI
 
 <img src="https://github.com/feed-mina/StopWatch/blob/main/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%EB%9D%BC%EC%9D%B4%ED%8A%B8%EB%AA%A8%EB%93%9C.png?raw=true" width="600" alt="뽀모도로 라이트모드 화면" />
@@ -21,7 +26,7 @@
 <img src="https://github.com/feed-mina/StopWatch/blob/main/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C.png?raw=true" width="600" alt="뽀모도로 다크모드 화면" />
 
 
-## 🌓 카카오톡 기록 보내기 UI
+## 💬 카카오톡 기록 보내기 UI
 
 <img src="https://github.com/feed-mina/StopWatch/blob/main/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1.png?raw=true" width="600" alt="뽀모도로 카카오톡 기록 화면" />
 
@@ -111,4 +116,4 @@ Electron과 웹에서의 UI 차이를 최소화하기 위해 **반응형 디자�
 
 ### 마무리
 이 프로젝트를 통해 Vue와 Electron의 결합 방식, OAuth 인증 시스템, 그리고 UI/UX 최적화에 대한 실무 경험을 쌓을 수 있었습니다. 앞으로도 지속적으로 기능을 개선하며 사용자 친화적인 앱으로 발전시켜 나갈 예정입니다.
-
+---
