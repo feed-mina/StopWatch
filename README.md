@@ -1,15 +1,8 @@
 # 개인 프로젝트: Vue + Electron 기반 스탑워치 & 뽀모도로 타이머
 ## 프로젝트 URL : https://justsaying.co.kr/#/pomoLogin, https://justsaying.co.kr/#/pomoMain
 
-## 📽️ 시연 영상 보기 > 이미지 클릭
-
-<p align="center"> 
- 이미지 클릭
-  <a href="https://youtube.com/shorts/-Ir_SJ4zl3I">
-    <img src="https://img.youtube.com/vi/-Ir_SJ4zl3I/0.jpg" width="500" alt="JustSaying 시연 영상 썸네일" />
-  </a>
-</p>
-
+## 📽️ 시연 영상 보기  
+https://youtube.com/shorts/-Ir_SJ4zl3I
 
 > "작은 집중이 모이면, 결국 큰 성취가 된다."
 > 스스로에게 집중할 수 있는 도구를 만들어보고 싶었어요.
@@ -30,7 +23,8 @@
 
 <img src="https://github.com/feed-mina/StopWatch/blob/main/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1.png?raw=true" width="600" alt="뽀모도로 카카오톡 기록 화면" />
 
-``` 
+---
+
 ### 프로젝트 개요
 이 프로젝트는 일상에서 인터넷 서핑을 하거나, 업무 중 시간을 관리하지 못해 일정이나 연락을 놓치는 경우가 많아 직접 뽀모도로 타이머를 만들어보자는 생각에서 시작되었습니다. 🖐🏻  
 
